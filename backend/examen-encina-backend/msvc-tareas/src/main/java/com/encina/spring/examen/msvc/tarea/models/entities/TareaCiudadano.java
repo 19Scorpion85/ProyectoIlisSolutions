@@ -38,4 +38,16 @@ public class TareaCiudadano {
     public void setCiudadanoId(Long ciudadanoId) {
         this.ciudadanoId = ciudadanoId;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this==obj){
+            return true;
+        }
+        if(!(obj instanceof TareaCiudadano)){
+            return false;
+        }
+        TareaCiudadano o= (TareaCiudadano) obj;
+        return this.ciudadanoId!=null && this.ciudadanoId.equals(o.ciudadanoId);
+    }
 }//Cierre de la clase

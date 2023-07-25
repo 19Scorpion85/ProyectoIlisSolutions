@@ -3,6 +3,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase "Tarea" con atributos para la tabla 'tareas' de la base de datos.
  * @author: Andrés Encina.
@@ -26,6 +29,11 @@ public class Tarea {
 
     private LocalDateTime fecha_creacion = LocalDateTime.now();
 
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TareaCiudadano> tareaCiudadanos;
+
+
+
     public Tarea(Long id, String nombre, String descripcion, String dia_semana, LocalDateTime fecha_creacion) {
         this.id = id;
         this.nombre = nombre;
@@ -35,6 +43,7 @@ public class Tarea {
     }
 
     public Tarea() {
+        tareaCiudadanos=new ArrayList<>();
     }
 
     public Long getId() {
@@ -75,5 +84,21 @@ public class Tarea {
 
     public void setFecha_creacion(LocalDateTime fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
+    }
+
+    public void addTareaCiudadano(TareaCiudadano tareaCiudadano){
+        tareaCiudadanos.add(tareaCiudadano);
+    }
+
+    public void removeTareaCiudadano(TareaCiudadano tareaCiudadano){
+        tareaCiudadanos.remove(tareaCiudadano);
+    }
+
+    public List<TareaCiudadano> getTareaCiudadanos() {
+        return tareaCiudadanos;
+    }
+
+    public void setTareaCiudadanos(List<TareaCiudadano> tareaCiudadanos) {
+        this.tareaCiudadanos = tareaCiudadanos;
     }
 }//Cierre de la clase
