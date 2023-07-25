@@ -2,7 +2,6 @@ package org.encina.spring.examen.msvc.ciudadanos.controllers;
 import org.encina.spring.examen.msvc.ciudadanos.models.entities.Ciudadano;
 import org.encina.spring.examen.msvc.ciudadanos.services.CiudadanoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -10,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 /**
- * Clase "UsuarioController", administra controladores de usuario
+ * Clase "CiudadanoController", administra controladores de ciudadano
  * @author: Andrés Encina
  * @version: 24/07/2023/A
- * @See: "org.encina.spring.msvc.usuarios/services/UsuarioService"
- * @See: "org.encina.springcloud.msvc.usuarios/services/SequenceGeneratorService"
+ * @See: "org.encina.spring.examen.msvc.usuarios/services/CiudadanoService"
  */
 @RestController
 public class CiudadanoController {

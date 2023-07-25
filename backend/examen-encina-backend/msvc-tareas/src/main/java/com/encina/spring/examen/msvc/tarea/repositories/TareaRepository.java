@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * @See: "org.encina.spring.examen.msvc.tareas/models.entities/Tareas"
  */
 public interface TareaRepository extends CrudRepository<Tarea, Long> {
+
 }

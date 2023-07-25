@@ -6,11 +6,13 @@ import java.util.Optional;
  * Interface "TareaService" con extenxión a repositorios
  * @author: Andrés Encina
  * @version: 25/07/2023/A
- * @See: "org.encina.spring.msvc.tareas/repositories/TareaRepository"
+ * @See: "org.encina.spring.examen.msvc.tareas/repositories/TareaRepository"
  */
 public interface TareaService {
-    List<Tarea> Listar();
+    List<Tarea> listar();
     Optional<Tarea> porId(Long id);
     Tarea guardar(Tarea tarea);
     void eliminar(Long id);
+    List<Tarea> listarPorIds(Iterable<Long>ids);//Lista tarea por ids y los envia a TareaController.
+//Fin CRUD
 }//Cierre de interface

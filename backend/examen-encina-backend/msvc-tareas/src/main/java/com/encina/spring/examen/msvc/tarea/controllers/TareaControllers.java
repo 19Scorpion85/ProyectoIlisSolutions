@@ -27,7 +27,7 @@ public class TareaControllers {
      */
     @GetMapping("tarea/")
     public List<Tarea> listar(){
-        return service.Listar();
+        return service.listar();
     }//Cierre controlador listar()
 
     /**
@@ -41,14 +41,18 @@ public class TareaControllers {
         Optional<Tarea> tareaOptional=service.porId(id);
         Tarea c =null;
         Map<String, Object> response = new HashMap<>();
-        if(c == null) {
-            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
+
         if(tareaOptional.isPresent()){
             return ResponseEntity.ok(tareaOptional.get());
         }
+
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
         return ResponseEntity.notFound().build();
+
     }//Cierre controlador "detalle"
 
     /**

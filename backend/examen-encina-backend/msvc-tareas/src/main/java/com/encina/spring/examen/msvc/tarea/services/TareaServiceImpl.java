@@ -10,7 +10,7 @@ import java.util.Optional;
  * Interface "CiudadanoServiceImpl" con extenxión a repositorios
  * @author: Andrés Encina
  * @version: 24/07/2023/A
- * @See: "org.encina.spring.msvc.ciudadanos/services/CiudadanoService"
+ * @See: "org.encina.spring.examen.msvc.ciudadanos/services/CiudadanoService"
  */
 @Service
 public class TareaServiceImpl implements  TareaService{
@@ -19,13 +19,13 @@ public class TareaServiceImpl implements  TareaService{
     private TareaRepository repository;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Tarea> Listar() {
-        return (List<Tarea>) repository.findAll();
+    @Transactional(readOnly=true)
+    public List<Tarea> listar() {
+        return (List<Tarea>)repository.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly=true)
     public Optional<Tarea> porId(Long id) {
         return repository.findById(id);
     }
@@ -37,8 +37,18 @@ public class TareaServiceImpl implements  TareaService{
     }
 
     @Override
-    @Transactional
     public void eliminar(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly=true)
+    //Implementa llamado a tareas por ids seleccionados y los envía a TareaService.
+    public List<Tarea> listarPorIds(Iterable<Long> ids) {
+        return (List<Tarea>) repository.findAllById(ids);
+    }
+
+
+
+
 }//Cierre de la clase de implementación

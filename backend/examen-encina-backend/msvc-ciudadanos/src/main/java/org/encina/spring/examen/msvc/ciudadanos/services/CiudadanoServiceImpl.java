@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Interface "CiudadanoServiceImpl" con extenxión a repositorios
  * @author: Andrés Encina
  * @version: 24/07/2023/A
- * @See: "org.encina.spring.msvc.ciudadanos/services/CiudadanoService"
+ * @See: "org.encina.spring..examen.msvc.ciudadanos/services/CiudadanoService"
  */
 @Service
 public class CiudadanoServiceImpl implements CiudadanoService{
@@ -42,7 +42,6 @@ public class CiudadanoServiceImpl implements CiudadanoService{
 
     @Override
     @Transactional(readOnly=true)
-
     //Implementa llamado a usuarios por ids seleccionados y los envía a UsuarioService.
     public List<Ciudadano> listarPorIds(Iterable<Long> ids) {
         return (List<Ciudadano>) repository.findAllById(ids);
