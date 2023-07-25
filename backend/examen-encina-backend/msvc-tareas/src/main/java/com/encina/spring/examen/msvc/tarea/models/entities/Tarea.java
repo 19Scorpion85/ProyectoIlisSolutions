@@ -28,8 +28,6 @@ public class Tarea {
     @NotBlank(message="no puede estar vacio")
     private String dia_semana;
 
-    private LocalDateTime fecha_creacion = LocalDateTime.now();
-
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "tarea_id")
     private List<TareaCiudadano> tareaCiudadanos;
@@ -41,12 +39,11 @@ public class Tarea {
         ciudadanos=new ArrayList<>();
     }
 
-    public Tarea(Long id, String nombre, String descripcion, String dia_semana, LocalDateTime fecha_creacion) {
+    public Tarea(Long id, String nombre, String descripcion, String dia_semana) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.dia_semana = dia_semana;
-        this.fecha_creacion = fecha_creacion;
     }
 
     public Long getId() {
@@ -79,14 +76,6 @@ public class Tarea {
 
     public void setDia_semana(String dia_semana) {
         this.dia_semana = dia_semana;
-    }
-
-    public LocalDateTime getFecha_creacion() {
-        return fecha_creacion;
-    }
-
-    public void setFecha_creacion(LocalDateTime fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
     }
 
     public void addTareaCiudadano(TareaCiudadano tareaCiudadano){

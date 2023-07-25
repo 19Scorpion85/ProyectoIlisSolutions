@@ -52,10 +52,10 @@ public class TareaServiceImpl implements  TareaService {
     //Metodos de asignaciones de usuario a curso (CRUD) desde CursoService
     @Override
     @Transactional
-    public Optional<Ciudadano> asignarCiudadano(Ciudadano usuario, Long cursoId) {
-        Optional<Tarea> o =repository.findById(cursoId);
+    public Optional<Ciudadano> asignarCiudadano(Ciudadano ciudadano, Long tareaId) {
+        Optional<Tarea> o =repository.findById(tareaId);
         if(o.isPresent()){
-            Ciudadano ciudadanoMsvc = client.detalle(usuario.getId());
+            Ciudadano ciudadanoMsvc = client.detalle(ciudadano.getId());
             Tarea tarea = o.get();
             TareaCiudadano tareaCiudadano=new TareaCiudadano();
             tareaCiudadano.setCiudadanoId(ciudadanoMsvc.getId());

@@ -150,7 +150,7 @@ public class TareaControllers {
      * @return Acción crea a ciudadano
      */
     @PostMapping ("/crear-ciudadano/{tareaId}")
-    public ResponseEntity<?> crearUsuario(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
+    public ResponseEntity<?> crearCiudadano(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
             o=service.crearCiudadano(ciudadano, tareaId);
@@ -170,7 +170,7 @@ public class TareaControllers {
      * @return Acción de ciudadano eliminada
      */
     @DeleteMapping("/eliminar-ciudadano/{tareaId}")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
+    public ResponseEntity<?> eliminarCiudadano(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
             o=service.eliminarCiudadano(ciudadano, tareaId);
@@ -190,7 +190,6 @@ public class TareaControllers {
      * @return Acción de tarea eliminada
      */
     @DeleteMapping("/eliminar-tarea-ciudadano/{id}")
-    //Desasigna usuario del curso por id
     public ResponseEntity<?> eliminarTareaCiudadanoPorId(@PathVariable Long id){
         service.eliminarTareaCiudadanoPorId(id);
         return ResponseEntity.noContent().build();
