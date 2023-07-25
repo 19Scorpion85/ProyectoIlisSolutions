@@ -9,13 +9,9 @@ package com.encina.spring.examen.msvc.tarea.models;
 public class Ciudadano {
 
     private Long id;
-
     private String nombre;
-
     private String apellido_paterno;
-
     private String apellido_materno;
-
     private String email;
 
     public Long getId() {
