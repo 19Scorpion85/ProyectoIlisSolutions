@@ -1,19 +1,18 @@
 package org.encina.spring.examen.msvc.ciudadanos.models.entities;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-/*
- * Clase con parametros de Ciudadano.
- * Crea la tabla 'usuarios' en la base de datos msvc_ciudadanos.
- * Valida datos con anotaciones antes de actualizar tabla.
- * @author Andrés Encina.
+/**
+ * Clase "Ciudadano" con atributos para la tabla 'ciudadanos' de la base de datos.
+ * @author: Andrés Encina.
+ * @version: 24/07/2023/A
  */
 @Entity
 @Table(name="ciudadanos")
 public class Ciudadano {
+    //Campos de la clase
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,10 +25,6 @@ public class Ciudadano {
     @NotBlank(message="no puede estar vacio")
     @Size(min=4, max=12, message="debe tener entre 4 y 12 caracteres")
     private String apellido_materno;
-
-    @NotBlank(message="no puede estar vacio")
-    @Size(min=8, message="Rut debe ser sin puntos ni digito verificador")
-    private String rut;
 
     @Email
     @Column(unique =true)
@@ -97,4 +92,4 @@ public class Ciudadano {
                 ", email='" + email + '\'' +
                 '}';
     }
-}
+}//Cierre de la clase

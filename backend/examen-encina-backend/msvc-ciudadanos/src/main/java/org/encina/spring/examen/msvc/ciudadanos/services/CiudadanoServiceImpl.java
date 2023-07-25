@@ -1,5 +1,4 @@
 package org.encina.spring.examen.msvc.ciudadanos.services;
-
 import org.encina.spring.examen.msvc.ciudadanos.models.entities.Ciudadano;
 import org.encina.spring.examen.msvc.ciudadanos.repositories.CiudadanoRepository;
 import org.springframework.stereotype.Service;
@@ -7,11 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-/*
- * Clase service implementación de Ciudadano.
- * Implementa los CRUD de CiudadanoRepository enlazado con CiudadanoService hacia CiudadanoController.
- * Valida existencia repetitiva de email.
- * @author Andrés Encina.
+
+/**
+ * Interface "CiudadanoServiceImpl" con extenxión a repositorios
+ * @author: Andrés Encina
+ * @version: 24/07/2023/A
+ * @See: "org.encina.spring.msvc.ciudadanos/services/CiudadanoService"
  */
 @Service
 public class CiudadanoServiceImpl implements CiudadanoService{
@@ -44,15 +44,13 @@ public class CiudadanoServiceImpl implements CiudadanoService{
 
     @Override
     @Transactional(readOnly=true)
+    //Implementa llamado a usuarios por ids seleccionados y los envía a UsuarioService.
     public List<Ciudadano> listarPorIds(Iterable<Long> ids) {
-        return (List<Ciudadano>) repository.findAllById(ids);//Implementa llamado a usuarios por ids seleccionados y los envía a UsuarioService.
+        return (List<Ciudadano>) repository.findAllById(ids);
     }
 
     @Override
     public Optional<Ciudadano> porEmail(String email) {
         return repository.findByEmail(email);
     }
-
-
-
-}
+}//Cierre de la clase de implementación
