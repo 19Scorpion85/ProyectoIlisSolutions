@@ -1,6 +1,8 @@
 package com.encina.spring.examen.msvc.tarea.controllers;
+import com.encina.spring.examen.msvc.tarea.models.Ciudadano;
 import com.encina.spring.examen.msvc.tarea.models.entities.Tarea;
 import com.encina.spring.examen.msvc.tarea.services.TareaService;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -121,6 +123,78 @@ public class TareaControllers {
         }
         return ResponseEntity.notFound().build();
     }//Cierre de controlador eliminar
+
+    /**
+     * Controlador "asignaCiudadano" para interacción con msvc-ciudadano
+     * @param tareaId Define la tarea que asignará
+     * @return Acción tarea asignada a usuario
+     */
+    @PutMapping("/asignar-ciudadano/{tareaId}")
+    public ResponseEntity<?> asignarCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
+        Optional<Ciudadano> o;
+        try{
+            o=service.asignarCiudadano(ciudadano, tareaId);
+        }catch(FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("mensaje"," " +
+                    "el ciudadano no pudo ser asignado: "+e.getMessage()));
+        }
+        if(o.isPresent()){
+            return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+        }
+        return ResponseEntity.notFound().build();
+    }//Cierre de controlador
+
+    /**
+     * Controlador "creaCiudadano" para interacción con msvc-ciudadano
+     * @param tareaId Define la tarea para creación de ciudadano
+     * @return Acción crea a ciudadano
+     */
+    @PostMapping ("/crear-ciudadano/{tareaId}")
+    public ResponseEntity<?> crearUsuario(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
+        Optional<Ciudadano> o;
+        try{
+            o=service.crearCiudadano(ciudadano, tareaId);
+        }catch(FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("mensaje"," " +
+                    "no se pudo crear al ciudadano : "+e.getMessage()));
+        }
+        if(o.isPresent()){
+            return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+        }
+        return ResponseEntity.notFound().build();
+    }//Cierre de controlador
+
+    /**
+     * Controlador "eliminar" seleccionando al ciudadano que no realizará la tarea
+     * @param tareaId Define ciudadano a eliminar
+     * @return Acción de ciudadano eliminada
+     */
+    @DeleteMapping("/eliminar-ciudadano/{tareaId}")
+    public ResponseEntity<?> eliminarUsuario(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
+        Optional<Ciudadano> o;
+        try{
+            o=service.eliminarCiudadano(ciudadano, tareaId);
+        }catch(FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("mensaje"," " +
+                    "No pudo eliminar al ciudadano: "+e.getMessage()));
+        }
+        if(o.isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).body(o.get());
+        }
+        return ResponseEntity.notFound().build();
+    }//Cierre de controlador
+
+    /**
+     * Controlador "eliminar" seleccionando la tarea y lo elimina
+     * @param id Define la tarea a eliminar
+     * @return Acción de tarea eliminada
+     */
+    @DeleteMapping("/eliminar-tarea-ciudadano/{id}")
+    //Desasigna usuario del curso por id
+    public ResponseEntity<?> eliminarTareaCiudadanoPorId(@PathVariable Long id){
+        service.eliminarTareaCiudadanoPorId(id);
+        return ResponseEntity.noContent().build();
+    }//Cierre de controlador
 
     /**
      * Controlador de errores
