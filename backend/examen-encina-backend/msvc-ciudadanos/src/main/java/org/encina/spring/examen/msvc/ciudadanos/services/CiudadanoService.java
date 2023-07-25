@@ -15,7 +15,7 @@ public interface CiudadanoService {
     Optional<Ciudadano> porId(Long id);
     Ciudadano guardar(Ciudadano ciudadano);
     void eliminar(Long id);
-    List<Ciudadano> listarPorIds(Iterable<Long>ids);//Lista ciudadanos por ids y los envia a UsuarioController.
+    List<Ciudadano> listarPorIds(Iterable<Long>ids);//Lista ciudadanos por ids y los envia a CiudadanoController.
 
     Optional<Ciudadano> porEmail(String email);//Validación si existe email en la base de datos
 
