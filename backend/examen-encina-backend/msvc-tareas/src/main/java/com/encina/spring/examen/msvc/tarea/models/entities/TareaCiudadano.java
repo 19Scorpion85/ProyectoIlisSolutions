@@ -16,14 +16,6 @@ public class TareaCiudadano {
     @Column(name="ciudadano_id",unique = true)
     private Long ciudadanoId;
 
-    public TareaCiudadano(Long id, Long ciudadanoId) {
-        this.id = id;
-        this.ciudadanoId = ciudadanoId;
-    }
-
-    public TareaCiudadano() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -49,6 +41,6 @@ public class TareaCiudadano {
             return false;
         }
         TareaCiudadano o= (TareaCiudadano) obj;
-        return this.ciudadanoId!=null && this.ciudadanoId.equals(o.ciudadanoId);
+        return this.ciudadanoId !=null && this.ciudadanoId.equals(o.ciudadanoId);
     }
 }//Cierre de la clase

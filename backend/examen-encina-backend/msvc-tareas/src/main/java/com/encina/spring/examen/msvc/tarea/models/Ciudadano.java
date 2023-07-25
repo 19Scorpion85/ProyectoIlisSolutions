@@ -18,14 +18,6 @@ public class Ciudadano {
 
     private String email;
 
-    public Ciudadano(Long id, String nombre, String apellido_paterno, String apellido_materno, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido_paterno = apellido_paterno;
-        this.apellido_materno = apellido_materno;
-        this.email = email;
-    }
-
     public Long getId() {
         return id;
     }

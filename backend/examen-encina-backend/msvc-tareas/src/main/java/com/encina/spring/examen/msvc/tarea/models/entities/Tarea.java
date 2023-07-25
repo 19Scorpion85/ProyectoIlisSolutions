@@ -3,7 +3,6 @@ import com.encina.spring.examen.msvc.tarea.models.Ciudadano;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Tarea {
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "tarea_id")
-    private List<TareaCiudadano> tareaCiudadanos;
+    private List<TareaCiudadano> tareaCiudadanos;   //Configuración cascada
     @Transient
     private  List<Ciudadano> ciudadanos;
 
@@ -39,12 +38,31 @@ public class Tarea {
         ciudadanos=new ArrayList<>();
     }
 
-    public Tarea(Long id, String nombre, String descripcion, String dia_semana) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.dia_semana = dia_semana;
+    public List<Ciudadano> getCiudadanos() {
+        return ciudadanos;
     }
+
+    public void setCiudadanos(List<Ciudadano> ciudadanos) {
+        this.ciudadanos = ciudadanos;
+    }
+
+    public List<TareaCiudadano> getTareaCiudadanos() {
+        return tareaCiudadanos;
+    }
+
+    public void addTareaCiudadano(TareaCiudadano tareaCiudadano){
+        tareaCiudadanos.add(tareaCiudadano);
+    }
+
+    public void removeTareaCiudadano(TareaCiudadano tareaCiudadano){
+        tareaCiudadanos.remove(tareaCiudadano);
+    }
+
+    public void setTareaCiudadanos(List<TareaCiudadano> tareaCiudadanos) {
+        this.tareaCiudadanos = tareaCiudadanos;
+    }
+    //Término de cascada
+
 
     public Long getId() {
         return id;
@@ -76,29 +94,5 @@ public class Tarea {
 
     public void setDia_semana(String dia_semana) {
         this.dia_semana = dia_semana;
-    }
-
-    public void addTareaCiudadano(TareaCiudadano tareaCiudadano){
-        tareaCiudadanos.add(tareaCiudadano);
-    }
-
-    public void removeTareaCiudadano(TareaCiudadano tareaCiudadano){
-        tareaCiudadanos.remove(tareaCiudadano);
-    }
-
-    public List<TareaCiudadano> getTareaCiudadanos() {
-        return tareaCiudadanos;
-    }
-
-    public void setTareaCiudadanos(List<TareaCiudadano> tareaCiudadanos) {
-        this.tareaCiudadanos = tareaCiudadanos;
-    }
-
-    public List<Ciudadano> getCiudadanos() {
-        return ciudadanos;
-    }
-
-    public void setCiudadanos(List<Ciudadano> ciudadanos) {
-        this.ciudadanos = ciudadanos;
     }
 }//Cierre de la clase
