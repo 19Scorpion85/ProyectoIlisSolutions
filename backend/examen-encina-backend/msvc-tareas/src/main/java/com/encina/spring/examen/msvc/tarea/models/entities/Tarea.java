@@ -1,4 +1,6 @@
 package com.encina.spring.examen.msvc.tarea.models.entities;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -21,7 +23,7 @@ public class Tarea {
     @NotBlank(message="no puede estar vacio")
     @Size(min=4, message="debe tener más de 4 caracteres")
     private String descripcion;
-    @NotBlank(message="no puede estar vacio")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fecha_tarea;
 
     public Tarea(Long id, String nombre, String descripcion, Date fecha_tarea) {
