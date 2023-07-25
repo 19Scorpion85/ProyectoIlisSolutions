@@ -45,14 +45,11 @@ public class TareaControllers {
         if(tareaOptional.isPresent()){
             return ResponseEntity.ok(tareaOptional.get());
         }
-
         if(c == null) {
             response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
-
         return ResponseEntity.notFound().build();
-
     }//Cierre controlador "detalle"
 
     /**
@@ -80,21 +77,21 @@ public class TareaControllers {
     @PutMapping("tarea/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Tarea tarea, BindingResult result,@PathVariable Long id){
         Tarea c =null;
+        Optional<Tarea> o = service.porId(id);
         Map<String, Object> response = new HashMap<>();
-        if(c == null) {
-            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
         if(result.hasErrors()){
             return validar(result);
         }
-        Optional<Tarea> o = service.porId(id);
         if(o.isPresent()){
             Tarea tareaDB =o.get();
             tareaDB.setNombre(tarea.getNombre());
             tareaDB.setDescripcion(tarea.getDescripcion());
             tareaDB.setFecha_tarea(tareaDB.getFecha_tarea());
             return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(tareaDB));
+        }
+        if(c == null) {
+            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.notFound().build();
     }//Cierre de controlador editar usuario
@@ -109,13 +106,13 @@ public class TareaControllers {
         Optional<Tarea> o =service.porId(id);
         Tarea c =null;
         Map<String, Object> response = new HashMap<>();
-        if(c == null) {
-            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
         if(o.isPresent()){
             service.eliminar(id);
             return ResponseEntity.noContent().build();
+        }
+        if(c == null) {
+            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.notFound().build();
     }//Cierre de controlador eliminar
