@@ -1,4 +1,4 @@
-package com.encina.spring.msvc.tareas;
+package com.encina.spring.examen.msvc.tarea.examen.msvc.tareas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

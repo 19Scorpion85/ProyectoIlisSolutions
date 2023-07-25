@@ -1,4 +1,4 @@
-package com.encina.spring.msvc.tareas;
+package com.encina.spring.examen.msvc.tarea;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
