@@ -1,9 +1,8 @@
 package com.encina.spring.examen.msvc.tarea.models.entities;
-import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDateTime;
 /**
  * Clase "Tarea" con atributos para la tabla 'tareas' de la base de datos.
  * @author: Andrés Encina.
@@ -25,13 +24,19 @@ public class Tarea {
     @NotBlank(message="no puede estar vacio")
     private String dia_semana;
 
-    public Tarea(Long id, String nombre, String descripcion, String dia_semana) {
+    private LocalDateTime fecha_creacion = LocalDateTime.now();
+
+    public Tarea(Long id, String nombre, String descripcion, String dia_semana, LocalDateTime fecha_creacion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.dia_semana = dia_semana;
+        this.fecha_creacion = fecha_creacion;
     }
-    
+
+    public Tarea() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -62,5 +67,13 @@ public class Tarea {
 
     public void setDia_semana(String dia_semana) {
         this.dia_semana = dia_semana;
+    }
+
+    public LocalDateTime getFecha_creacion() {
+        return fecha_creacion;
+    }
+
+    public void setFecha_creacion(LocalDateTime fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
     }
 }//Cierre de la clase
