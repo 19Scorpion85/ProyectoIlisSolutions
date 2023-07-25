@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/backend.iml" filepath="$PROJECT_DIR$/.idea/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/examen-encina-backend/examen-encina-backend.iml" filepath="$PROJECT_DIR$/examen-encina-backend/examen-encina-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/examen-encina-backend/msvc-ciudadanos/msvc-ciudadanos.iml" filepath="$PROJECT_DIR$/examen-encina-backend/msvc-ciudadanos/msvc-ciudadanos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examen-encina-backend/msvc-tareas/msvc-tareas.iml" filepath="$PROJECT_DIR$/examen-encina-backend/msvc-tareas/msvc-tareas.iml" />
     </modules>
   </component>
 </project>

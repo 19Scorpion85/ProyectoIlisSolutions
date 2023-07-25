@@ -10,16 +10,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="msvc-ciudadanos" />
+        <module name="msvc-tareas" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="examen-encina-backend" target="1.8" />
       <module name="msvc-ciudadanos" target="17" />
+      <module name="msvc-tareas" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="msvc-ciudadanos" options="-parameters" />
+      <module name="msvc-tareas" options="-parameters" />
     </option>
   </component>
 </project>

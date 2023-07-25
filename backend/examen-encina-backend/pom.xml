@@ -17,6 +17,7 @@
 
   <modules>
     <module>msvc-ciudadanos</module>
+    <module>msvc-tareas</module>
   </modules>
 
   <name>Archetype - examen-encina-backend</name>
