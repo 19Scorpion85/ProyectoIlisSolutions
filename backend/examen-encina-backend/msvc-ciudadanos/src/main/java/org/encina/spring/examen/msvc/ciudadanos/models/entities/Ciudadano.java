@@ -1,4 +1,4 @@
-package org.encina.spring.examen.msvc.ciudadanos.models.entity;
+package org.encina.spring.examen.msvc.ciudadanos.models.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -26,6 +26,11 @@ public class Ciudadano {
     @NotBlank(message="no puede estar vacio")
     @Size(min=4, max=12, message="debe tener entre 4 y 12 caracteres")
     private String apellido_materno;
+
+    @NotBlank(message="no puede estar vacio")
+    @Size(min=8, message="Rut debe ser sin puntos ni digito verificador")
+    private String rut;
+
     @Email
     @Column(unique =true)
     @NotBlank(message="no puede estar vacio")
