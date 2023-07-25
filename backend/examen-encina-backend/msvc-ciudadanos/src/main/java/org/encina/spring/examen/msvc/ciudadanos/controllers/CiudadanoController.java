@@ -2,6 +2,7 @@ package org.encina.spring.examen.msvc.ciudadanos.controllers;
 import org.encina.spring.examen.msvc.ciudadanos.models.entities.Ciudadano;
 import org.encina.spring.examen.msvc.ciudadanos.services.CiudadanoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -39,10 +40,20 @@ public class CiudadanoController {
     //Respuesta solicitud de información ciudadano por id.
     public ResponseEntity<?> detalle(@PathVariable Long id){
         Optional<Ciudadano> ciudadanoOptional=service.porId(id);
+        Ciudadano c =null;
+        Map<String, Object> response = new HashMap<>();
+
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
         if(ciudadanoOptional.isPresent()){
             return ResponseEntity.ok(ciudadanoOptional.get());
         }
+
         return ResponseEntity.notFound().build();
+
     }//Cierre controlador "detalle"
 
     /**
@@ -64,7 +75,9 @@ public class CiudadanoController {
                     .body(Collections
                             .singletonMap("error","Ya existe un ciudadano con ese correo electrónico"));
         }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(ciudadano));
+
     }//Cierre controlador "crear"
 
     /**
@@ -76,6 +89,14 @@ public class CiudadanoController {
      */
     @PutMapping("ciudadano/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Ciudadano ciudadano, BindingResult result,@PathVariable Long id){
+        Ciudadano c =null;
+        Map<String, Object> response = new HashMap<>();
+
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
         if(result.hasErrors()){
             return validar(result);
         }
@@ -107,6 +128,12 @@ public class CiudadanoController {
     //Respuesta pública que elimina al ciudadano después de identificarlo por id.
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Ciudadano> o =service.porId(id);
+        Ciudadano c =null;
+        Map<String, Object> response = new HashMap<>();
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
         if(o.isPresent()){
             service.eliminar(id);
             return ResponseEntity.noContent().build();
