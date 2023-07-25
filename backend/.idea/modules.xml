@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/backend.iml" filepath="$PROJECT_DIR$/.idea/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examen-encina-backend/examen-encina-backend.iml" filepath="$PROJECT_DIR$/examen-encina-backend/examen-encina-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examen-encina-backend/msvc-ciudadanos/msvc-ciudadanos.iml" filepath="$PROJECT_DIR$/examen-encina-backend/msvc-ciudadanos/msvc-ciudadanos.iml" />
+    </modules>
+  </component>
+</project>
