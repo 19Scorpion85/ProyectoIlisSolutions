@@ -1,4 +1,4 @@
-package com.encina.spring.examen.msvc.tarea.service;
+package com.encina.spring.examen.msvc.tarea.services;
 
 import com.encina.spring.examen.msvc.tarea.models.entities.Tarea;
 import com.encina.spring.examen.msvc.tarea.repositories.TareaRepository;
