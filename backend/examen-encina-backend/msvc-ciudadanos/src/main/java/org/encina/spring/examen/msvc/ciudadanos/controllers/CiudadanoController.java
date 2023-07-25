@@ -126,4 +126,4 @@ public class CiudadanoController {
         });
         return ResponseEntity.badRequest().body(errores);
     }//Fin controlador errores
-}//Fin clase UsuarioController
+}//Fin clase CiudadanoController
