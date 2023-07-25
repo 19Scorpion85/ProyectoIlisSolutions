@@ -3,7 +3,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 /**
  * Clase "Ciudadano" con atributos para la tabla 'ciudadanos' de la base de datos.
  * @author: Andrés Encina.
@@ -25,7 +24,6 @@ public class Ciudadano {
     @NotBlank(message="no puede estar vacio")
     @Size(min=4, max=12, message="debe tener entre 4 y 12 caracteres")
     private String apellido_materno;
-
     @Email
     @Column(unique =true)
     @NotBlank(message="no puede estar vacio")

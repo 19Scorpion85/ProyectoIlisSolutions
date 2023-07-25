@@ -2,7 +2,6 @@ package org.encina.spring.examen.msvc.ciudadanos.repositories;
 import org.encina.spring.examen.msvc.ciudadanos.models.entities.Ciudadano;
 import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
-
 /**
  * Interface "CiudadanoRepository" con extenxión a repositorios
  * @author: Andrés Encina
