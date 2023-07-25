@@ -2,7 +2,8 @@ package com.encina.spring.examen.msvc.tarea.models.entities;
 
 import javax.persistence.*;
 /**
- * Clase "TareaCiudadano" con atributos para la tabla 'tareas_ciudadanos' de la base de datos.
+ * Clase "TareaCiudadano" con atributos para la tabla 'tareas_ciudadanos'
+ * de la base de datos para conectar tareas con usuario.
  * @author: Andrés Encina.
  * @version: 25/07/2023/A
  */

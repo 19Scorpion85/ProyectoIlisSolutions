@@ -1,4 +1,5 @@
 package com.encina.spring.examen.msvc.tarea.models.entities;
+import com.encina.spring.examen.msvc.tarea.models.Ciudadano;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -30,9 +31,15 @@ public class Tarea {
     private LocalDateTime fecha_creacion = LocalDateTime.now();
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "tarea_id")
     private List<TareaCiudadano> tareaCiudadanos;
+    @Transient
+    private  List<Ciudadano> ciudadanos;
 
-
+    public Tarea() {
+        tareaCiudadanos=new ArrayList<>();
+        ciudadanos=new ArrayList<>();
+    }
 
     public Tarea(Long id, String nombre, String descripcion, String dia_semana, LocalDateTime fecha_creacion) {
         this.id = id;
@@ -40,10 +47,6 @@ public class Tarea {
         this.descripcion = descripcion;
         this.dia_semana = dia_semana;
         this.fecha_creacion = fecha_creacion;
-    }
-
-    public Tarea() {
-        tareaCiudadanos=new ArrayList<>();
     }
 
     public Long getId() {
@@ -100,5 +103,13 @@ public class Tarea {
 
     public void setTareaCiudadanos(List<TareaCiudadano> tareaCiudadanos) {
         this.tareaCiudadanos = tareaCiudadanos;
+    }
+
+    public List<Ciudadano> getCiudadanos() {
+        return ciudadanos;
+    }
+
+    public void setCiudadanos(List<Ciudadano> ciudadanos) {
+        this.ciudadanos = ciudadanos;
     }
 }//Cierre de la clase

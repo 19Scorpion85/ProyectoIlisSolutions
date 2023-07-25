@@ -1,4 +1,5 @@
 package com.encina.spring.examen.msvc.tarea.services;
+import com.encina.spring.examen.msvc.tarea.models.Ciudadano;
 import com.encina.spring.examen.msvc.tarea.models.entities.Tarea;
 import com.encina.spring.examen.msvc.tarea.repositories.TareaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.Optional;
  * @See: "org.encina.spring.examen.msvc.ciudadanos/services/CiudadanoService"
  */
 @Service
-public class TareaServiceImpl implements  TareaService{
+public class TareaServiceImpl implements  TareaService {
 
     @Autowired
     private TareaRepository repository;
@@ -39,6 +40,21 @@ public class TareaServiceImpl implements  TareaService{
     @Override
     public void eliminar(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Ciudadano> asignarCiudadano(Ciudadano ciudadano, Long ciudadanoId) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Ciudadano> crearCiudadano(Ciudadano ciudadano, Long ciudadanoId) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Ciudadano> eliminarCiudadano(Ciudadano ciudadano, Long ciudadanoId) {
+        return Optional.empty();
     }
 
     @Override
