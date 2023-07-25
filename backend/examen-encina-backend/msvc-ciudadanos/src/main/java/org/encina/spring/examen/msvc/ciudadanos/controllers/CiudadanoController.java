@@ -58,14 +58,12 @@ public class CiudadanoController {
         if(result.hasErrors()){
             return validar(result);  //Respuesta validación de errores desde private static "validar" (último controlador).
         }
-
         //Condición si existe email repetido en la base de datos.
         if(!ciudadano.getEmail().isEmpty() && service.porEmail(ciudadano.getEmail()).isPresent()){
             return ResponseEntity.badRequest()
                     .body(Collections
                             .singletonMap("error","Ya existe un ciudadano con ese correo electrónico"));
         }
-
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(ciudadano));
     }//Cierre controlador "crear"
 
@@ -84,7 +82,6 @@ public class CiudadanoController {
         Optional<Ciudadano> o = service.porId(id);
         if(o.isPresent()){
             Ciudadano ciudadanoDB =o.get();
-
             //Validación si existe un registro de emails iguales en la bd.
             if(!ciudadano.getEmail().isEmpty() && !ciudadano.getEmail().equalsIgnoreCase(ciudadanoDB.getEmail())
                     && service.porEmail(ciudadano.getEmail()).isPresent())
@@ -92,7 +89,6 @@ public class CiudadanoController {
                 return ResponseEntity.badRequest().body(Collections
                         .singletonMap("mensaje","Ya existe un ciudadano con ese correo electrónico"));
             }
-
             ciudadanoDB.setNombre(ciudadano.getNombre());
             ciudadanoDB.setApellido_paterno(ciudadano.getApellido_paterno());
             ciudadanoDB.setApellido_materno(ciudadano.getApellido_materno());
