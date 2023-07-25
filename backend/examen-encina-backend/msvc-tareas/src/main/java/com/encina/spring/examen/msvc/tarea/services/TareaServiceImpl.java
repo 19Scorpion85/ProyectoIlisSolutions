@@ -121,12 +121,12 @@ public class TareaServiceImpl implements  TareaService {
     public void eliminarTareaCiudadanoPorId(Long id) {
         repository.eliminarTareaCiudadanoPorId(id);
     }
-/*
+
     @Override
     @Transactional(readOnly=true)
     //Implementa llamado a tareas por ids seleccionados y los envía a TareaService.
     public List<Tarea> listarPorIds(Iterable<Long> ids) {
         return (List<Tarea>) repository.findAllById(ids);
     }
-*/
+
 }//Cierre de la clase de implementación

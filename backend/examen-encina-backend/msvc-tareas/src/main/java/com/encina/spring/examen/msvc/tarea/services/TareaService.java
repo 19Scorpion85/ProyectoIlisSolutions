@@ -24,6 +24,6 @@ public interface TareaService {
 
     void eliminarTareaCiudadanoPorId(Long id);
 
-   // List<Tarea> listarPorIds(Iterable<Long>ids);//Lista tarea por ids y los envia a TareaController.
+    List<Tarea> listarPorIds(Iterable<Long>ids);//Lista tarea por ids y los envia a TareaController.
 //Fin CRUD
 }//Cierre de interface

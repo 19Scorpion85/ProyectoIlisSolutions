@@ -27,7 +27,7 @@ public class TareaControllers {
      * Controlador "listar()" que muestra todas las tareas registradas
      * @return Lista de todas las tareas
      */
-    @GetMapping("tarea/")
+    @GetMapping("/")
     public List<Tarea> listar(){
         return service.listar();
     }//Cierre controlador listar()
@@ -37,7 +37,7 @@ public class TareaControllers {
      * @param id Define el parametro que busca la tarea
      * @return tarea por id
      */
-    @GetMapping("tarea/{id}")
+    @GetMapping("/{id}")
     //Respuesta solicitud de información ciudadano por id.
     public ResponseEntity<?> detalle(@PathVariable Long id){
         Optional<Tarea> tareaOptional=service.porId(id);
@@ -60,7 +60,7 @@ public class TareaControllers {
      * @return Acción del controlador al ingresar tarea
      * @See: "controllers/TareaController - ResponseEntity<Map<String, String>> validar()"
      */
-    @PostMapping("tarea/")
+    @PostMapping("/")
     public ResponseEntity<?> crear(@Valid @RequestBody Tarea tarea, BindingResult result){
         Map<String, Object> response = new HashMap<>();
         if(result.hasErrors()){
@@ -78,7 +78,7 @@ public class TareaControllers {
      * @param id Define el parametro que busca la tarea
      * @return Resultados de la validación de errores
      */
-    @PutMapping("tarea/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Tarea tarea, BindingResult result,@PathVariable Long id){
         Tarea c =null;
         Optional<Tarea> o = service.porId(id);
@@ -107,7 +107,7 @@ public class TareaControllers {
      * @param id Define la tarea a eliminar
      * @return Acción de tarea eliminada
      */
-    @DeleteMapping("tarea/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Tarea> o =service.porId(id);
         Tarea c =null;
@@ -149,14 +149,14 @@ public class TareaControllers {
      * @param tareaId Define la tarea para creación de ciudadano
      * @return Acción crea a ciudadano
      */
-    @PostMapping ("/crear-ciudadano/{tareaId}")
-    public ResponseEntity<?> crearCiudadano(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
+    @PostMapping("/crear-ciudadano/{tareaId}")
+    public ResponseEntity<?> crearCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
             o=service.crearCiudadano(ciudadano, tareaId);
         }catch(FeignException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("mensaje"," " +
-                    "no se pudo crear al ciudadano : "+e.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("mensaje","No se pudo crear " +
+                    "o error en al comunicación: "+e.getMessage()));
         }
         if(o.isPresent()){
             return ResponseEntity.status(HttpStatus.CREATED).body(o.get());

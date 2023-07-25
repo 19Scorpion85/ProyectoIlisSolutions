@@ -27,8 +27,6 @@ public class Tarea {
     @NotBlank(message="no puede estar vacio")
     private String dia_semana;
 
-
-
     //Inicio cascada
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "tarea_id")
@@ -65,7 +63,6 @@ public class Tarea {
         tareaCiudadanos.remove(tareaCiudadano);
     }
     //Término de cascada
-
 
     public Long getId() {
         return id;
