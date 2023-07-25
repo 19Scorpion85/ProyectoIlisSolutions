@@ -1,6 +1,5 @@
 package com.encina.spring.examen.msvc.tarea.models.entities;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -23,19 +22,16 @@ public class Tarea {
     @NotBlank(message="no puede estar vacio")
     @Size(min=4, message="debe tener más de 4 caracteres")
     private String descripcion;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date fecha_tarea;
+    @NotBlank(message="no puede estar vacio")
+    private String dia_semana;
 
-    public Tarea(Long id, String nombre, String descripcion, Date fecha_tarea) {
+    public Tarea(Long id, String nombre, String descripcion, String dia_semana) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fecha_tarea = fecha_tarea;
+        this.dia_semana = dia_semana;
     }
-
-    public Tarea() {
-    }
-
+    
     public Long getId() {
         return id;
     }
@@ -60,21 +56,11 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha_tarea() {
-        return fecha_tarea;
+    public String getDia_semana() {
+        return dia_semana;
     }
 
-    public void setFecha_tarea(Date fecha_tarea) {
-        this.fecha_tarea = fecha_tarea;
-    }
-
-    @Override
-    public String toString() {
-        return "Tarea{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", fecha_tarea=" + fecha_tarea +
-                '}';
+    public void setDia_semana(String dia_semana) {
+        this.dia_semana = dia_semana;
     }
 }//Cierre de la clase

@@ -41,7 +41,6 @@ public class TareaControllers {
         Optional<Tarea> tareaOptional=service.porId(id);
         Tarea c =null;
         Map<String, Object> response = new HashMap<>();
-
         if(tareaOptional.isPresent()){
             return ResponseEntity.ok(tareaOptional.get());
         }
@@ -61,10 +60,13 @@ public class TareaControllers {
      */
     @PostMapping("tarea/")
     public ResponseEntity<?> crear(@Valid @RequestBody Tarea tarea, BindingResult result){
+        Map<String, Object> response = new HashMap<>();
         if(result.hasErrors()){
             return validar(result);  //Respuesta validación de errores desde private static "validar" (último controlador).
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(tarea));
+        response.put("mensaje", " la tarea fue agregada exitosamente!");
+        service.guardar(tarea);
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }//Cierre controlador "crear"
 
     /**
@@ -86,8 +88,10 @@ public class TareaControllers {
             Tarea tareaDB =o.get();
             tareaDB.setNombre(tarea.getNombre());
             tareaDB.setDescripcion(tarea.getDescripcion());
-            tareaDB.setFecha_tarea(tareaDB.getFecha_tarea());
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(tareaDB));
+            tareaDB.setDia_semana(tarea.getDia_semana());
+            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" fue actualizada exitosamente!")));
+            service.guardar(tareaDB);
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
         }
         if(c == null) {
             response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
@@ -108,7 +112,8 @@ public class TareaControllers {
         Map<String, Object> response = new HashMap<>();
         if(o.isPresent()){
             service.eliminar(id);
-            return ResponseEntity.noContent().build();
+            response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" fue eliminada exitosamente!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         }
         if(c == null) {
             response.put("mensaje", "La tarea ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
