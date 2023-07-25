@@ -25,7 +25,7 @@ public class CiudadanoController {
      * Controlador "listar()" que muestra todos los ciudadanos registrados
      * @return Lista de todos los ciudadanos
      */
-    @GetMapping("/")
+    @GetMapping("ciudadano/")
     public List<Ciudadano> listar(){
         return service.listar();
     }//Cierre controlador listar()
@@ -35,7 +35,7 @@ public class CiudadanoController {
      * @param id Define el parametro que busca al ciudadanos
      * @return ciudadano por id
      */
-    @GetMapping("/{id}")
+    @GetMapping("ciudadano/{id}")
     //Respuesta solicitud de información ciudadano por id.
     public ResponseEntity<?> detalle(@PathVariable Long id){
         Optional<Ciudadano> ciudadanoOptional=service.porId(id);
@@ -52,7 +52,7 @@ public class CiudadanoController {
      * @return Acción del controlador al ingresar ciudadano
      * @See: "controllers/CiudadanoController - ResponseEntity<Map<String, String>> validar()"
      */
-    @PostMapping("/")
+    @PostMapping("ciudadano/")
     //Respuesta pública que recibe parametros para creación de nuevo ciudadano.
     public ResponseEntity<?> crear(@Valid @RequestBody Ciudadano ciudadano, BindingResult result){
         if(result.hasErrors()){
@@ -74,7 +74,7 @@ public class CiudadanoController {
      * @param id Define el parametro que busca al ciudadano
      * @return Resultados de la validación de errores
      */
-    @PutMapping("/{id}")
+    @PutMapping("ciudadano/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Ciudadano ciudadano, BindingResult result,@PathVariable Long id){
         if(result.hasErrors()){
             return validar(result);
@@ -103,7 +103,7 @@ public class CiudadanoController {
      * @param id Define el iudadano a eliminar
      * @return Acción de ciudadano eliminado
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("ciudadano/{id}")
     //Respuesta pública que elimina al ciudadano después de identificarlo por id.
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Ciudadano> o =service.porId(id);
