@@ -1,13 +1,17 @@
 package com.encina.spring.examen.msvc.tarea.services;
-
 import com.encina.spring.examen.msvc.tarea.models.entities.Tarea;
 import com.encina.spring.examen.msvc.tarea.repositories.TareaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
+/**
+ * Interface "CiudadanoServiceImpl" con extenxión a repositorios
+ * @author: Andrés Encina
+ * @version: 24/07/2023/A
+ * @See: "org.encina.spring.msvc.ciudadanos/services/CiudadanoService"
+ */
 @Service
 public class TareaServiceImpl implements  TareaService{
 
@@ -37,4 +41,4 @@ public class TareaServiceImpl implements  TareaService{
     public void eliminar(Long id) {
         repository.deleteById(id);
     }
-}
+}//Cierre de la clase de implementación

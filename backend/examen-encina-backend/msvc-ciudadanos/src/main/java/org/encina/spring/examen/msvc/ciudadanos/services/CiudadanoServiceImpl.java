@@ -16,31 +16,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CiudadanoServiceImpl implements CiudadanoService{
     @Autowired
     private CiudadanoRepository repository;
+
     @Override
     @Transactional(readOnly=true)
     public List<Ciudadano> listar() {
         return (List<Ciudadano>)repository.findAll();
     }
+
     @Override
     @Transactional(readOnly=true)
     public Optional<Ciudadano> porId(Long id) {
         return repository.findById(id);
     }
+
     @Override
     @Transactional
     public Ciudadano guardar(Ciudadano ciudadano) {
         return repository.save(ciudadano);
     }
+
     @Override
     public void eliminar(Long id) {
         repository.deleteById(id);
     }
+
     @Override
     @Transactional(readOnly=true)
+
     //Implementa llamado a usuarios por ids seleccionados y los envía a UsuarioService.
     public List<Ciudadano> listarPorIds(Iterable<Long> ids) {
         return (List<Ciudadano>) repository.findAllById(ids);
     }
+
     @Override
     public Optional<Ciudadano> porEmail(String email) {
         return repository.findByEmail(email);
