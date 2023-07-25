@@ -40,16 +40,13 @@ public class CiudadanoController {
         Optional<Ciudadano> ciudadanoOptional=service.porId(id);
         Ciudadano c =null;
         Map<String, Object> response = new HashMap<>();
-
+        if(ciudadanoOptional.isPresent()){
+            return ResponseEntity.ok(ciudadanoOptional.get());
+        }
         if(c == null) {
             response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
-
-        if(ciudadanoOptional.isPresent()){
-            return ResponseEntity.ok(ciudadanoOptional.get());
-        }
-
         return ResponseEntity.notFound().build();
 
     }//Cierre controlador "detalle"
@@ -73,9 +70,7 @@ public class CiudadanoController {
                     .body(Collections
                             .singletonMap("error","Ya existe un ciudadano con ese correo electrónico"));
         }
-
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(ciudadano));
-
     }//Cierre controlador "crear"
 
     /**
@@ -89,16 +84,10 @@ public class CiudadanoController {
     public ResponseEntity<?> editar(@Valid @RequestBody Ciudadano ciudadano, BindingResult result,@PathVariable Long id){
         Ciudadano c =null;
         Map<String, Object> response = new HashMap<>();
-
-        if(c == null) {
-            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
-
+        Optional<Ciudadano> o = service.porId(id);
         if(result.hasErrors()){
             return validar(result);
         }
-        Optional<Ciudadano> o = service.porId(id);
         if(o.isPresent()){
             Ciudadano ciudadanoDB =o.get();
             //Validación si existe un registro de emails iguales en la bd.
@@ -114,6 +103,10 @@ public class CiudadanoController {
             ciudadanoDB.setEmail(ciudadano.getEmail());
             return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(ciudadanoDB));
         }
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
         return ResponseEntity.notFound().build();
     }//Cierre de controlador editar usuario
 
@@ -128,13 +121,13 @@ public class CiudadanoController {
         Optional<Ciudadano> o =service.porId(id);
         Ciudadano c =null;
         Map<String, Object> response = new HashMap<>();
-        if(c == null) {
-            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
         if(o.isPresent()){
             service.eliminar(id);
             return ResponseEntity.noContent().build();
+        }
+        if(c == null) {
+            response.put("mensaje", "El ciudadano ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.notFound().build();
     }//Cierre de controlador eliminar usuario
