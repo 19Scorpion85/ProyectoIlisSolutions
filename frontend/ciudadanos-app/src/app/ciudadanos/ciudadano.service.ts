@@ -10,8 +10,7 @@ import { CIUDADANOS } from './ciudadano.json';
 export class CiudadanoService {
 
   private urlEndPoint:string='http://localhost:8001/ciudadano/';
-
-  //private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
+  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(private http:HttpClient,private router:Router) { }
 
@@ -20,7 +19,11 @@ export class CiudadanoService {
       return this.http.get<Ciudadano[]>(this.urlEndPoint).pipe(
         map((response)=>response as Ciudadano[])
       );
-
   }
+
+  create(ciudadano: Ciudadano): Observable<Ciudadano>{
+    return this.http.post<Ciudadano>(this.urlEndPoint,ciudadano,{headers:this.httpHeaders})
+  }
+
 
 }

@@ -14,6 +14,7 @@ export class TareaService {
   private urlEndPoint:string='http://localhost:8002/';
 
   constructor(private http:HttpClient,private router:Router) { }
+  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   getTareas():Observable<Tarea[]>{
    // return  of(TAREAS);
@@ -21,5 +22,11 @@ export class TareaService {
     map((response)=>response as Tarea[])
   );
   }
+
+  create(tarea: Tarea): Observable<Tarea>{
+    return this.http.post<Tarea>(this.urlEndPoint,tarea,{headers:this.httpHeaders})
+  }
+
+
 
 }
