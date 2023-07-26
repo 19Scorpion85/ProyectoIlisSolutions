@@ -19,14 +19,14 @@
         </div>
   
         <div class="form-group row">
-          <label for="descripcion" class="col-form-label col-sm-2">Apellido paterno</label>
+          <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
           <div class="col-sm-6">
             <input type="text" class="form-control" [(ngModel)]="tarea.descripcion" name="descripcion" #descripcion="ngModel" required> <!-- required -->
             <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
-                <div *ngIf="apellido_paterno.errors.required">
+                <div *ngIf="descripcion.errors.required">
                   La descripción es requerida
                 </div>
-                <div *ngIf="nombre.errors.minlength">
+                <div *ngIf="descripcion.errors.minlength">
                  Descripción debe tener al menos 4 caracteres
                 </div>
               </div> 

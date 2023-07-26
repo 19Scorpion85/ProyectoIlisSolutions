@@ -17,7 +17,7 @@ const routes:Routes=[
   {path:'ciudadanos',component:CiudadanosComponent},
   {path:'tareas',component:TareasComponent},
   {path:'ciudadanos/form',component:FormComponent},
-  {path:'tareas/form-tarea.component',component:FormTareaComponent}
+  {path:'tareas/form-tarea',component:FormTareaComponent}
 ]
 
 @NgModule({
