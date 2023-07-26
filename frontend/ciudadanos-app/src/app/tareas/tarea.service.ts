@@ -27,15 +27,15 @@ export class TareaService {
   }
 
   getTarea(id):Observable<Tarea>{
-    return this.http.get<Tarea>(`${this.urlEndPoint}/${id}`)
+    return this.http.get<Tarea>(`${this.urlEndPoint}${id}`)
    }
    
    update(tarea: Tarea): Observable<Tarea>{
-    return this.http.put<Tarea>(`${this.urlEndPoint}/${tarea.id}`,tarea,{headers: this.httpHeaders})
+    return this.http.put<Tarea>(`${this.urlEndPoint}${tarea.id}`,tarea,{headers: this.httpHeaders})
    }
   
   delete(id:number):Observable<Tarea>{
-    return this.http.delete<Tarea>(`${this.urlEndPoint}/${id}`,{headers:this.httpHeaders})
+    return this.http.delete<Tarea>(`${this.urlEndPoint}${id}`,{headers:this.httpHeaders})
   }
 
 }

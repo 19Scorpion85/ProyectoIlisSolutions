@@ -40,7 +40,10 @@ export class CiudadanosComponent implements OnInit {
       if (result.value) {
         this.ciudadanoService.delete(ciudadano.id).subscribe(
           response=>{
-            swal('Eliminado!', 'ciudadano fue eliminado correctamente', 'success')
+            this.ciudadanos=this.ciudadanos.filter(cli=>cli !==ciudadano)
+            swal('Ciudadano Eliminado!', 
+                 'El ciudadano fue eliminado correctamente', 
+                 'success')
           }
         )        
       } 

@@ -3,6 +3,7 @@ import { Ciudadano } from './ciudadano';
 import { CiudadanoService } from './ciudadano.service';
 import {Router} from '@angular/router';
 import swal from 'sweetalert2';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html'
