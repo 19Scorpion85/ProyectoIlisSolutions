@@ -14,7 +14,7 @@ import java.util.*;
  * @version: 24/07/2023/A
  * @See: "org.encina.spring.examen.msvc.usuarios/services/CiudadanoService"
  */
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = {"Content-Type", "Authorization"})
 @RestController
 public class CiudadanoController {
     //Inicio controladores
@@ -35,7 +35,7 @@ public class CiudadanoController {
      * @param id Define el parametro que busca al ciudadanos
      * @return ciudadano por id
      */
-    @GetMapping("/{id}")
+    @GetMapping("ciudadano/{id}")
     //Respuesta solicitud de información ciudadano por id.
     public ResponseEntity<?> detalle(@PathVariable Long id){
         Optional<Ciudadano> ciudadanoOptional=service.porId(id);
@@ -58,7 +58,7 @@ public class CiudadanoController {
      * @return Acción del controlador al ingresar ciudadano
      * @See: "controllers/CiudadanoController - ResponseEntity<Map<String, String>> validar()"
      */
-    @PostMapping("/")
+    @PostMapping("ciudadano/")
     //Respuesta pública que recibe parametros para creación de nuevo ciudadano.
     public ResponseEntity<?> crear(@Valid @RequestBody Ciudadano ciudadano, BindingResult result){
         Map<String, Object> response = new HashMap<>();
@@ -83,7 +83,7 @@ public class CiudadanoController {
      * @param id Define el parametro que busca al ciudadano
      * @return Resultados de la validación de errores
      */
-    @PutMapping("/{id}")
+    @PutMapping("ciudadano/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Ciudadano ciudadano, BindingResult result,@PathVariable Long id){
         Ciudadano c =null;
         Map<String, Object> response = new HashMap<>();
@@ -120,7 +120,7 @@ public class CiudadanoController {
      * @param id Define el iudadano a eliminar
      * @return Acción de ciudadano eliminado
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("ciudadano/{id}")
     //Respuesta pública que elimina al ciudadano después de identificarlo por id.
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Ciudadano> o =service.porId(id);
