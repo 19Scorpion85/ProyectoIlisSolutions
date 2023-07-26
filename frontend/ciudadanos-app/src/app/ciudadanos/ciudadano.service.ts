@@ -25,5 +25,16 @@ export class CiudadanoService {
     return this.http.post<Ciudadano>(this.urlEndPoint,ciudadano,{headers:this.httpHeaders})
   }
 
+   getCiudadano(id):Observable<Ciudadano>{
+    return this.http.get<Ciudadano>(`${this.urlEndPoint}/${id}`)
+   }
+   
+   update(ciudadano: Ciudadano): Observable<Ciudadano>{
+    return this.http.put<Ciudadano>(`${this.urlEndPoint}/${ciudadano.id}`,ciudadano,{headers: this.httpHeaders})
+   }
+  
+  delete(id:number):Observable<Ciudadano>{
+    return this.http.delete<Ciudadano>(`${this.urlEndPoint}/${id}`,{headers:this.httpHeaders})
+  }
 
 }
