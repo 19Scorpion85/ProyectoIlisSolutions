@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CiudadanoService } from './ciudadano.service';
 import {ActivatedRoute} from '@angular/router';
 import { Ciudadano } from './ciudadano';
+import { CIUDADANOS } from './ciudadano.json';
 
 @Component({
   selector: 'app-ciudadanos',
@@ -11,10 +12,14 @@ export class CiudadanosComponent implements OnInit {
 
   ciudadanos:Ciudadano[];
 
-  constructor(private ciudadanoService: CiudadanoService,
-    private activatedRoute: ActivatedRoute ){}
+  constructor(private ciudadanoService: CiudadanoService){}
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.ciudadanoService.getCiudadanos().subscribe(
+      (ciudadanos)=>{
+        this.ciudadanos=ciudadanos
+      }
+    );
   }
 
 }

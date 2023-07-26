@@ -1,0 +1,42 @@
+<!--<detalle-cliente *ngIf="clienteSeleccionado" [cliente] = "clienteSeleccionado"></detalle-cliente>-->
+
+<div class="card border-primary mb-3">
+    <div class="card-header">Tareas</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de tareas</h5>
+      <div class="my-2 text-left">
+    <!--   <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/ciudadanos/form']">
+          Crear Cliente
+        </button>    --> 
+        
+  
+      </div>
+  <!--   <div *ngIf="ciudadanos?.length == 0" class="alert alert-info">
+        No hay registros en la base de datos!
+      </div> -->
+     
+      <table  class="table table-bordered table-striped"   >
+        <thead>
+          <tr>    
+            <th>id</th>
+            <th>tarea</th>
+            <th>descripción</th>    
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarea of tareas">    
+            <td>{{tarea.id}}</td><!--  <button type="button" (click)="abrirModal(tarea)"  class="btn btn-success btn-sm">{{ cliente.id }}</button></td>-->
+            <td>{{tarea.nombre }}</td>
+            <td>{{tarea.descripcion}}</td>
+            <td>
+              <button type="button" name="editar"  class="btn btn-primary btn-sm">editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" >eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
