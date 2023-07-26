@@ -14,6 +14,7 @@ import java.util.*;
  * @version: 24/07/2023/A
  * @See: "org.encina.spring.examen.msvc.usuarios/services/CiudadanoService"
  */
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class CiudadanoController {
     //Inicio controladores
