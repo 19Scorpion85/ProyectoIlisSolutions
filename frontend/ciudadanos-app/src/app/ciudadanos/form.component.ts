@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ciudadano } from './ciudadano';
 import { CiudadanoService } from './ciudadano.service';
 import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html'
@@ -17,10 +18,10 @@ export class FormComponent implements OnInit {
   }
 
   public create():void{
-     this.ciudadanoService.create(this.ciudadano).subscribe(
-       response=> this.router.navigate(['ciudadano/'])
-     )
+     this.ciudadanoService.create(this.ciudadano)
+     .subscribe(response=> this.router.navigate(['ciudadano/']));
   }
-
+  
+  
 
 }
