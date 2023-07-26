@@ -19,8 +19,7 @@ export class TareaService {
   getTareas():Observable<Tarea[]>{
    // return  of(TAREAS);
    return this.http.get<Tarea[]>(this.urlEndPoint).pipe(
-    map((response)=>response as Tarea[])
-  );
+    map((response)=>response as Tarea[]));
   }
 
   create(tarea: Tarea): Observable<Tarea>{
