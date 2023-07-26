@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CiudadanoService } from './ciudadano.service';
+import {ActivatedRoute} from '@angular/router';
+import { Ciudadano } from './ciudadano';
 
 @Component({
   selector: 'app-ciudadanos',
@@ -6,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CiudadanosComponent implements OnInit {
 
-  constructor() { }
+  ciudadanos:Ciudadano[];
+
+  constructor(private ciudadanoService: CiudadanoService,
+    private activatedRoute: ActivatedRoute ){}
 
   ngOnInit(): void {
   }

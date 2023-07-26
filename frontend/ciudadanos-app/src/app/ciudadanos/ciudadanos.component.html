@@ -1,1 +1,49 @@
-<p>ciudadanos works!</p>
+<!--<detalle-cliente *ngIf="clienteSeleccionado" [cliente] = "clienteSeleccionado"></detalle-cliente>-->
+
+<div class="card border-primary mb-3">
+  <div class="card-header">Ciudanos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de ciudadanos</h5>
+    <div class="my-2 text-left">
+  <!--   <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/ciudadanos/form']">
+        Crear Cliente
+      </button>    --> 
+      
+
+    </div>
+<!--   <div *ngIf="ciudadanos?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div> -->
+   
+
+    <table  class="table table-bordered table-striped"   >
+      <thead>
+        <tr>    
+          <th>id</th>
+          <th>nombre</th>
+          <th>apellido paterno</th>
+          <th>apellido materno</th>
+          <th>email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ciudadano of ciudadanos">
+          <td>  
+          </td>
+          <td>{{ciudadano.id }}</td><!--  <button type="button" (click)="abrirModal(ciudadano)"  class="btn btn-success btn-sm">{{ cliente.id }}</button></td>-->
+          <td>{{ciudadano.nombre }}</td>
+          <td>{{ciudadano.apellido_paterno}}</td>
+          <td>{{ciudadano.apellido_materno}}</td>
+          <td>{{ciudadano.email }}</td>
+          <td>
+            <button type="button" name="editar"  class="btn btn-primary btn-sm">editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" >eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</div>
