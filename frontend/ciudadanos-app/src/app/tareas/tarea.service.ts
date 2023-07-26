@@ -12,10 +12,11 @@ import {map} from 'rxjs/operators';
 export class TareaService {
 
   private urlEndPoint:string='http://localhost:8002/tarea/';
-
-  constructor(private http:HttpClient,private router:Router) { }
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
+  constructor(private http:HttpClient,private router:Router) { }
+
+  
   getTareas():Observable<Tarea[]>{
    // return  of(TAREAS);
    return this.http.get<Tarea[]>(this.urlEndPoint).pipe(

@@ -36,8 +36,7 @@ export class CiudadanosComponent implements OnInit {
       buttonsStyling:false,
       reverseButtons:true
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.value) {
+         if (result.value) {
         this.ciudadanoService.delete(ciudadano.id).subscribe(
           response=>{
             this.ciudadanos=this.ciudadanos.filter(cli=>cli !==ciudadano)

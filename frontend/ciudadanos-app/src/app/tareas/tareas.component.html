@@ -31,14 +31,13 @@
             <td>{{tarea.descripcion}}</td>
             <td>{{tarea.dia_semana}}</td>
             <td>
-              <button type="button" name="editar"  class="btn btn-primary btn-sm">editar</button>
+              <button type="button" name="button"  [routerLink]="['/tareas/form-tarea/',tarea.id]" class="btn btn-primary btn-sm">editar</button>
             </td>
             <td>
               <button type="button" name="eliminar" (click)='delete(tarea)' class="btn btn-danger btn-sm">eliminar</button>
             </td>
           </tr>
         </tbody>
-      </table>
-      
+      </table>      
     </div>
   </div>

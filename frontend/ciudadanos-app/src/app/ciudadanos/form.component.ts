@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ciudadano } from './ciudadano';
 import { CiudadanoService } from './ciudadano.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 
 @Component({
@@ -13,9 +13,20 @@ export class FormComponent implements OnInit {
   public ciudadano:Ciudadano=new Ciudadano();
   public titulo:string = "Agregar ciudadano";
 
-  constructor(private ciudadanoService: CiudadanoService,private router:Router) { }
+  constructor(private ciudadanoService: CiudadanoService,
+              private router:Router,
+              private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  cargarCiudadano():void{
+    this.activatedRoute.params.subscribe(params=>{
+      let id = params['id']
+      if(id){
+        this.ciudadanoService.getCiudadano(id).subscribe((ciudadano)=>this.ciudadano=ciudadano)
+      }
+    })
   }
 
   create():void{
@@ -26,6 +37,7 @@ export class FormComponent implements OnInit {
     });
   }
   
+
   
 
 }
