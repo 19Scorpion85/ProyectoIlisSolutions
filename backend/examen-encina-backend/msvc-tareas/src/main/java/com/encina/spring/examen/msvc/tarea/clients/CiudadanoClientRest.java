@@ -1,9 +1,7 @@
 package com.encina.spring.examen.msvc.tarea.clients;
-
 import com.encina.spring.examen.msvc.tarea.models.Ciudadano;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @FeignClient(name="msvc-ciudadanos", url="localhost:8001")
