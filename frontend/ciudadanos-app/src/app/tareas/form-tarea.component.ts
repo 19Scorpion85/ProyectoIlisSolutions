@@ -16,10 +16,10 @@ export class FormTareaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  public create():void{
+  daysOfWeek: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  public createTarea():void{
     this.tareaService.create(this.tarea).subscribe(
-      response=> this.router.navigate(['/tareas'])
+      response=> this.router.navigate(['tarea/'])
     )
   }
 

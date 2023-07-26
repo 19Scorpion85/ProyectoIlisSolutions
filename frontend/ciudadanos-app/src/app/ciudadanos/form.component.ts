@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
 
   public create():void{
      this.ciudadanoService.create(this.ciudadano).subscribe(
-       response=> this.router.navigate(['/ciudadano'])
+       response=> this.router.navigate(['ciudadano/'])
      )
   }
 

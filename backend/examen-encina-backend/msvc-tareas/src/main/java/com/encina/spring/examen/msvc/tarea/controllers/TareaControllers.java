@@ -28,7 +28,7 @@ public class TareaControllers {
      * Controlador "listar()" que muestra todas las tareas registradas
      * @return Lista de todas las tareas
      */
-    @GetMapping("/")
+    @GetMapping("tarea/")
     public List<Tarea> listar(){
         return service.listar();
     }//Cierre controlador listar()
@@ -38,7 +38,7 @@ public class TareaControllers {
      * @param id Define el parametro que busca la tarea
      * @return tarea por id
      */
-    @GetMapping("/{id}")
+    @GetMapping("tarea/{id}")
     //Respuesta solicitud de información ciudadano por id.
     public ResponseEntity<?> detalle(@PathVariable Long id){
         Optional<Tarea> tareaOptional=service.porId(id);
@@ -61,7 +61,7 @@ public class TareaControllers {
      * @return Acción del controlador al ingresar tarea
      * @See: "controllers/TareaController - ResponseEntity<Map<String, String>> validar()"
      */
-    @PostMapping("/")
+    @PostMapping("tarea/")
     public ResponseEntity<?> crear(@Valid @RequestBody Tarea tarea, BindingResult result){
         Map<String, Object> response = new HashMap<>();
         if(result.hasErrors()){
@@ -79,7 +79,7 @@ public class TareaControllers {
      * @param id Define el parametro que busca la tarea
      * @return Resultados de la validación de errores
      */
-    @PutMapping("/{id}")
+    @PutMapping("tarea/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Tarea tarea, BindingResult result,@PathVariable Long id){
         Tarea c =null;
         Optional<Tarea> o = service.porId(id);
@@ -108,7 +108,7 @@ public class TareaControllers {
      * @param id Define la tarea a eliminar
      * @return Acción de tarea eliminada
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("tarea/{id}")
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Tarea> o =service.porId(id);
         Tarea c =null;
@@ -130,7 +130,7 @@ public class TareaControllers {
      * @param tareaId Define la tarea que asignará
      * @return Acción tarea asignada a usuario
      */
-    @PutMapping("/asignar-ciudadano/{tareaId}")
+    @PutMapping("tarea/asignar-ciudadano/{tareaId}")
     public ResponseEntity<?> asignarCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
@@ -150,7 +150,7 @@ public class TareaControllers {
      * @param tareaId Define la tarea para creación de ciudadano
      * @return Acción crea a ciudadano
      */
-    @PostMapping("/crear-ciudadano/{tareaId}")
+    @PostMapping("tarea/crear-ciudadano/{tareaId}")
     public ResponseEntity<?> crearCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
@@ -170,7 +170,7 @@ public class TareaControllers {
      * @param tareaId Define ciudadano a eliminar
      * @return Acción de ciudadano eliminada
      */
-    @DeleteMapping("/eliminar-ciudadano/{tareaId}")
+    @DeleteMapping("tarea/eliminar-ciudadano/{tareaId}")
     public ResponseEntity<?> eliminarCiudadano(@RequestBody Ciudadano ciudadano,@PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
@@ -190,7 +190,7 @@ public class TareaControllers {
      * @param id Define la tarea a eliminar
      * @return Acción de tarea eliminada
      */
-    @DeleteMapping("/eliminar-tarea-ciudadano/{id}")
+    @DeleteMapping("tarea/eliminar-tarea-ciudadano/{id}")
     public ResponseEntity<?> eliminarTareaCiudadanoPorId(@PathVariable Long id){
         service.eliminarTareaCiudadanoPorId(id);
         return ResponseEntity.noContent().build();
