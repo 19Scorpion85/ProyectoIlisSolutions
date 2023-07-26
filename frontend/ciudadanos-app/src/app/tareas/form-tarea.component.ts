@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from './tarea';
+import { TareaService } from './tarea.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-form-tarea',
@@ -10,14 +12,15 @@ export class FormTareaComponent implements OnInit {
   public tarea:Tarea=new Tarea();
   public titulo:string = "Agregar tarea";
 
-  constructor() { }
+  constructor(public tareaService:TareaService,public router:Router) { }
 
   ngOnInit(): void {
   }
 
   public create():void{
-    console.log("Cliked!")
-    console.log(this.tarea)
+    this.tareaService.create(this.tarea).subscribe(
+      response=> this.router.navigate(['/tareas'])
+    )
   }
 
 

@@ -17,7 +17,7 @@ import java.util.*;
  * @version: 25/07/2023/A
  * @See: "org.encina.spring.examen.msvc.tarea/services/TareaService"
  */
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
 @RestController
 public class TareaControllers {
     //Inicio controladores
