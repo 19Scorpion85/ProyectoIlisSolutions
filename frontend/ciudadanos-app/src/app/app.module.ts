@@ -16,7 +16,8 @@ const routes:Routes=[
   {path:'',redirectTo:'/ciudadanos',pathMatch:'full'},
   {path:'ciudadanos',component:CiudadanosComponent},
   {path:'tareas',component:TareasComponent},
-  {path:'ciudadanos/form',component:FormComponent}
+  {path:'ciudadanos/form',component:FormComponent},
+  {path:'tareas/form-tarea.component',component:FormTareaComponent}
 ]
 
 @NgModule({

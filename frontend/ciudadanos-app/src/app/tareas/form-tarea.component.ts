@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tarea } from './tarea';
 
 @Component({
   selector: 'app-form-tarea',
@@ -6,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormTareaComponent implements OnInit {
 
+  public tarea:Tarea=new Tarea();
+  public titulo:string = "Agregar tarea";
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  public create():void{
+    console.log("Cliked!")
+    console.log(this.tarea)
+  }
+
 
 }

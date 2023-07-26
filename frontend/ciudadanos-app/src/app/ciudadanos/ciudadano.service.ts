@@ -13,7 +13,6 @@ export class CiudadanoService {
 
   //private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
-
   constructor(private http:HttpClient,private router:Router) { }
 
   getCiudadanos():Observable<Ciudadano[]>{

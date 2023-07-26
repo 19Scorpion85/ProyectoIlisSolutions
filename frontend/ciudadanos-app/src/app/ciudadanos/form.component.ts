@@ -8,7 +8,7 @@ import { Ciudadano } from './ciudadano';
 export class FormComponent implements OnInit {
    
   public ciudadano:Ciudadano=new Ciudadano();
-  public titulo:string = "Creación de ciudadano";
+  public titulo:string = "Agregar ciudadano";
 
   constructor() { }
 
