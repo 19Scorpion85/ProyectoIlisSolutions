@@ -18,6 +18,7 @@ export class FormComponent implements OnInit {
               private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cargarCiudadano();
   }
 
   cargarCiudadano():void{
@@ -33,11 +34,16 @@ export class FormComponent implements OnInit {
      this.ciudadanoService.create(this.ciudadano)
      .subscribe(ciudadano=> {
       this.router.navigate(['ciudadano/'])
-      swal('Nuevo ciudadano',`creado con existo`)
+      swal('Nuevo ciudadano',`creado con existo`,`success`)
     });
   }
   
-
+  update():void{
+    this.ciudadanoService.update(this.ciudadano)
+    .subscribe( ciudadano=>{
+      this.router.navigate(['ciudadano/'])
+      swal('Ciudadano Actualizado',`Ciudadano actualizado correctamente`,`success`)
+    })
+  }
   
-
 }

@@ -18,6 +18,7 @@ export class FormTareaComponent implements OnInit {
               private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cargarTarea();
   }
 
   daysOfWeek: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
@@ -38,6 +39,15 @@ export class FormTareaComponent implements OnInit {
      swal('Nueva tarea',`creada con existo`)
    });
  }
+ 
+ update():void{
+  this.tareaService.update(this.tarea)
+  .subscribe( tarea=>{
+    this.router.navigate(['tarea/'])
+    swal('Tarea Actualizada',`La tarea fue actualizada correctamente`,`success`)
+
+  })
+}
 
 
 }
