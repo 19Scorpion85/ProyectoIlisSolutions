@@ -8,11 +8,15 @@ import {CiudadanoService} from './ciudadanos/ciudadano.service';
 import { RouterModule, Routes } from '@angular/router';
 import{HttpClientModule} from '@angular/common/http';
 import { TareasComponent } from './tareas/tareas.component';
+import { FormComponent } from './ciudadanos/form.component';
+import { FormTareaComponent } from './tareas/form-tarea.component';
+import { FormsModule } from '@angular/forms';
 
 const routes:Routes=[
   {path:'',redirectTo:'/ciudadanos',pathMatch:'full'},
   {path:'ciudadanos',component:CiudadanosComponent},
-  {path:'tareas',component:TareasComponent}
+  {path:'tareas',component:TareasComponent},
+  {path:'ciudadanos/form',component:FormComponent}
 ]
 
 @NgModule({
@@ -21,11 +25,14 @@ const routes:Routes=[
     HeaderComponent,
     FooterComponent,
     CiudadanosComponent,
-    TareasComponent
+    TareasComponent,
+    FormComponent,
+    FormTareaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [CiudadanoService],
