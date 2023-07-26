@@ -4,10 +4,10 @@ import { TareaService } from './tarea.service';
 
 @Component({
   selector: 'app-tareas',
-  templateUrl: './tareas.component.html',
-  styleUrls: ['./tareas.component.css']
+  templateUrl: './tareas.component.html'
 })
-export class TareasComponent  {
+export class TareasComponent implements OnInit{
+
   tareas:Tarea[];
 
   constructor(private tareaService: TareaService){}
