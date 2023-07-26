@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadanoService } from './ciudadano.service';
-import {ActivatedRoute} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import { Ciudadano } from './ciudadano';
 import { CIUDADANOS } from './ciudadano.json';
+import { Tarea } from '../tareas/tarea';
 import swal from 'sweetalert2';
 
 @Component({
@@ -12,8 +13,10 @@ import swal from 'sweetalert2';
 export class CiudadanosComponent implements OnInit {
 
   ciudadanos:Ciudadano[];
-
-  constructor(private ciudadanoService: CiudadanoService){}
+  tarea:Tarea[];
+  constructor(private ciudadanoService: CiudadanoService,              
+              public router:Router,
+              private activatedRoute:ActivatedRoute){}
 
   ngOnInit(){
     this.ciudadanoService.getCiudadanos().subscribe(
