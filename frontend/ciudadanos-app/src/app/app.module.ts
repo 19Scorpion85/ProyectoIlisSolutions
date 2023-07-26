@@ -11,6 +11,7 @@ import { TareasComponent } from './tareas/tareas.component';
 import { FormComponent } from './ciudadanos/form.component';
 import { FormTareaComponent } from './tareas/form-tarea.component';
 import { FormsModule } from '@angular/forms';
+import { FormTCiudadanoComponent } from './tareas/form-tciudadano.component';
 
 const routes:Routes=[
   {path:'',redirectTo:'/ciudadanos',pathMatch:'full'},
@@ -30,7 +31,8 @@ const routes:Routes=[
     CiudadanosComponent,
     TareasComponent,
     FormComponent,
-    FormTareaComponent
+    FormTareaComponent,
+    FormTCiudadanoComponent
   ],
   imports: [
     BrowserModule,
