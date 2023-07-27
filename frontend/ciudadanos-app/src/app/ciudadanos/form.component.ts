@@ -30,10 +30,10 @@ export class FormComponent implements OnInit {
     })
   }
 
-  create():void{
-     this.ciudadanoService.create(this.ciudadano)
+  create():void{  
+   this.ciudadanoService.create(this.ciudadano)
      .subscribe(ciudadano=> {
-      this.router.navigate(['ciudadano/'])
+      this.router.navigate(['/ciudadanos'])
       swal('Nuevo ciudadano',`creado con existo`,`success`)
     });
   }
@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
   update():void{
     this.ciudadanoService.update(this.ciudadano)
     .subscribe( ciudadano=>{
-      this.router.navigate(['ciudadano/'])
+      this.router.navigate(['/ciudadanos'])
       swal('Ciudadano Actualizado',`Ciudadano actualizado correctamente`,`success`)
     })
   }

@@ -14,7 +14,6 @@ import java.util.*;
  * @version: 24/07/2023/A
  * @See: "org.encina.spring.examen.msvc.usuarios/services/CiudadanoService"
  */
-//@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = {"Content-Type", "Authorization"})
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CiudadanoController {
@@ -122,7 +121,6 @@ public class CiudadanoController {
      * @return Acción de ciudadano eliminado
      */
     @DeleteMapping("ciudadano/{id}")
-    //Respuesta pública que elimina al ciudadano después de identificarlo por id.
     public ResponseEntity<?> eliminar( @PathVariable Long id){
         Optional<Ciudadano> o =service.porId(id);
         Ciudadano c =null;

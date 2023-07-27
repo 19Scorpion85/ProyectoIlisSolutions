@@ -35,17 +35,16 @@ export class FormTareaComponent implements OnInit {
   create():void{
     this.tareaService.create(this.tarea)
     .subscribe(tarea=> {
-     this.router.navigate(['tarea/'])
-     swal('Nueva tarea',`creada con existo`)
+     this.router.navigate(['/tareas'])
+     swal('Nueva tarea',`creada con existo`,`success`)
    });
  }
  
  update():void{
   this.tareaService.update(this.tarea)
   .subscribe( tarea=>{
-    this.router.navigate(['tarea/'])
+    this.router.navigate(['/tareas'])
     swal('Tarea Actualizada',`La tarea fue actualizada correctamente`,`success`)
-
   })
 }
 

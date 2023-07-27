@@ -130,7 +130,7 @@ public class TareaControllers {
      * @param tareaId Define la tarea que asignará
      * @return Acción tarea asignada a usuario
      */
-    @PutMapping("tarea/asignar-ciudadano/{tareaId}")
+    @PutMapping("/asignar-ciudadano/{tareaId}")
     public ResponseEntity<?> asignarCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
@@ -150,7 +150,7 @@ public class TareaControllers {
      * @param tareaId Define la tarea para creación de ciudadano
      * @return Acción crea a ciudadano
      */
-    @PostMapping("tarea/crear-ciudadano/{tareaId}")
+    @PostMapping("/crear-ciudadano/{tareaId}")
     public ResponseEntity<?> crearCiudadano(@RequestBody Ciudadano ciudadano, @PathVariable Long tareaId){
         Optional<Ciudadano> o;
         try{
